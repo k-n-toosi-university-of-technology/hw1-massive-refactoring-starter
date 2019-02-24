@@ -11,6 +11,8 @@ YOUR_GRADER_BADGE looks like this: https://kntu-grader.herokuapp.com/minimal?rep
 مطابق صورت گفته شده در لینک زیر تمرین را حل کنید. در صورتی که مشکلی دارید ایمیل بزنید.
 </div>
 
+
+
 https://docs.google.com/document/d/1OPu_35qxazqLIId2om26v4Sji70XvVgGhnByPd1KRgQ/edit?usp=sharing
 
 
