@@ -13,22 +13,4 @@ YOUR_GRADER_BADGE looks like this: https://kntu-grader.herokuapp.com/minimal?rep
 
 https://docs.google.com/document/d/1OPu_35qxazqLIId2om26v4Sji70XvVgGhnByPd1KRgQ/edit?usp=sharing
 
-```java
-package ir.ac.kntu;
 
-import java.util.Arrays;
-
-public class ArrayReverse{
-    public static void reverse(String[] array){
-        //complete the body of this method
-        //don't reverse using a helper array
-    }
-    public static void main(String[] args){
-
-        reverse(args);
-        //show reversed array
-        System.out.println("args = " + Arrays.toString(args));
-    }
-
-}
-```
