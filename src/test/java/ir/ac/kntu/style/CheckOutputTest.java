@@ -253,57 +253,111 @@ public class CheckOutputTest {
 
     @Test(timeout = TIME_LIMIT)
     public void testCase22(){
-        assertTrue(checkRefactoring(
-                new String[]{"quuwueiwoeuwiiiwoeooowiiieie",
-                        "ajjdksjdksnckdllskdlsoodhfjdksjd",
-                        "qowiqjjwhqjjzbbxnnnzmmzmmxbxnznnnzbx",
-                        "aoowieoowjhsalskjdkskkksjddbdnsnnsnmmansoo",
-                        "oodkfodookokokokdokofkdkkko",
-                        "llqkwlllqkdjsksbbdnsoidhsjjskdhg",
-                        "sjjaksldhsjjaksbbdjskalskdjjshsjjjshhhdjsooshd",
-                        "hdjfbbdnfbdkspsnapppshajakkajahshhha",
-                        "oowkeoowkeowkowkoekowkojjqkwl",
-                        "koskdooskaosmzzxpaffqkyertsuwqzhklt"},
-                new String[]{"quuwueiwoeuwiiiwoeooowiiieie",
-                        "ajjdksjdksnckdllskdlsoodhfjdksjd",
-                        "qowiqjjwhqjjzbbxnnnzmmzmmxbxnznnnzbx",
-                        "aoowieqssthjhyiojdkskkksjddbdnsnnsnmmansoo",
-                        "oodkfodookokokokdokofkdkkko",
-                        "llqkwlllqkdjsksbbdnsoidhsjjskdhg",
-                        "sjjaksldhsjjaksbbdjskalskdjjshsjjjshhhdjsooshd",
-                        "hdjfbbdnfbdkspsnapppshajakkajahshhha",
-                        "oowkeoowkeowkowkoekowkojjqkwl",
-                        "koskdooskaosmzzxpaffqkyertsuwqzhklt"},
-                "YES" + SEPARATOR +
-                        "aoowieoowjhsalskjdkskkksjddbdnsnnsnmmansoo" + SEPARATOR +
-                        "aoowieqssthjhyiojdkskkksjddbdnsnnsnmmansoo"));
+		final String[] initials = {"quuwueiwoeuwiiiwoeooowiiieie",
+                "ajjdksjdksnckdllskdlsoodhfjdksjd",
+                "qowiqjjwhqjjzbbxnnnzmmzmmxbxnznnnzbx",
+                "eoowjhsalskj",
+                "oodkfodookokokokdokofkdkkko",
+                "llqkwlllqkdjsksbbdnsoidhsjjskdhg",
+                "sjjaksldhsjjaksbbdjskalskdjjshsjjjshhhdjsooshd",
+                "hdjfbbdnfbdkspsnapppshajakkajahshhha",
+                "oowkeoowkeowkowkoekowkojjqkwl",
+                "koskdooskaosmzzxpaffqkyertsuwqzhklt"};
+		final String[] tagets = {"quuwueiwoeuwiiiwoeooowiiieie",
+                "ajjdksjdksnckdllskdlsoodhfjdksjd",
+                "qowiqjjwhqjjzbbxnnnzmmzmmxbxnznnnzbx",
+                "eqssthjhyioj",
+                "oodkfodookokokokdokofkdkkko",
+                "llqkwlllqkdjsksbbdnsoidhsjjskdhg",
+                "sjjaksldhsjjaksbbdjskalskdjjshsjjjshhhdjsooshd",
+                "hdjfbbdnfbdkspsnapppshajakkajahshhha",
+                "oowkeoowkeowkowkoekowkojjqkwl",
+                "koskdooskaosmzzxpaffqkyertsuwqzhklt"};
+		final String yes = "YES";
+		boolean answerFound = checkRefactoring(initials, tagets,
+                yes + SEPARATOR + "eoowjhsalskj" + SEPARATOR + "eqssthjhyioj");
+		if (!answerFound){
+		    answerFound =checkRefactoring(initials, tagets,
+                    yes + SEPARATOR + "oowjhsalskj" + SEPARATOR + "qssthjhyioj");
+        }
+        if (!answerFound){
+            answerFound =checkRefactoring(initials, tagets,
+                    yes + SEPARATOR + "eoowjhsalsk" + SEPARATOR + "eqssthjhyio");
+        }
+        if (!answerFound){
+            answerFound =checkRefactoring(initials, tagets,
+                    yes + SEPARATOR + "oowjhsalsk" + SEPARATOR + "qssthjhyio");
+        }
+
+        assertTrue(answerFound);
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:8 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
     }
 
     @Test(timeout = TIME_LIMIT)
     public void testCase23(){
-        assertTrue(checkRefactoring(
-                new String[]{"ilonmaskmeforhelplolkekcheburek",
-                        "ceilonmaskmeforhelplolkekshrek",
-                        "iloveyousoiloveyousoaskmeforhelplo",
-                        "dontforgetifskmeforhelplol",
-                        "trololokekcheburek",
-                        "askmeforhelplolaskmeforhelplol",
-                        "askaskaskaskmeforhelplollololol",
-                        "kudahtahtahaskmeforhelplolkekcheburek",
-                        "sosososososososososososososososo",
-                        "youshallnotpassifyoudontaskmeforhelplol"},
-                new String[]{"ilonmaskmyselfouplolkekcheburek",
-                        "ceilonmaskmyselfouplolkekshrek",
-                        "iloveyousoiloveyousoaskmeforhelplo",
-                        "dontforgetifskmeforhelplol",
-                        "trololokekcheburek",
-                        "askmyselfouplolaskmeforhelplol",
-                        "askaskaskaskmyselfouplollololol",
-                        "kudahtahtahaskmyselfouplolkekcheburek",
-                        "sosososososososososososososososo",
-                        "youshallnotpassifyoudontaskmyselfouplol"},
-                "YES" + SEPARATOR + "askmeforhelplol" + SEPARATOR + "askmyselfouplol"));
+        final String[] initials = {"ilonmaskmeforhelpkekcheburek",
+                "ceilonmaskmeforhelpkekshrek",
+                "iloveyousoiloveyousoaskmeforhel",
+                "dontforgetifskmeforhelp",
+                "trololokekcheburek",
+                "askmeforhelpaskmeforhelp",
+                "askaskaskaskmeforhelp",
+                "kudahtahtahaskmeforhelpkekcheburek",
+                "sosososososososososososososososo",
+                "youshallnotpassifyoudontaskmeforhelp"};
+        final String[] targets = {"ilonmaskmyselfoupkekcheburek",
+                "ceilonmaskmyselfoupkekshrek",
+                "iloveyousoiloveyousoaskmeforhel",
+                "dontforgetifskmeforhelp",
+                "trololokekcheburek",
+                "askmyselfoupaskmeforhelp",
+                "askaskaskaskmyselfoup",
+                "kudahtahtahaskmyselfoupkekcheburek",
+                "sosososososososososososososososo",
+                "youshallnotpassifyoudontaskmyselfoup"};
+        final String yes = "YES";
+        boolean answerFound = checkRefactoring(initials, targets,
+                yes + SEPARATOR + "askmeforhelp" + SEPARATOR + "askmyselfoup");
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "skmeforhelp" + SEPARATOR + "skmyselfoup");
+        }
+
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "kmeforhelp" + SEPARATOR + "kmyselfoup");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "meforhelp" + SEPARATOR + "myselfoup");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "eforhelp" + SEPARATOR + "yselfoup");
+        }
+
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "askmeforhel" + SEPARATOR + "askmyselfou");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "skmeforhel" + SEPARATOR + "skmyselfou");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "kmeforhel" + SEPARATOR + "kmyselfou");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "meforhel" + SEPARATOR + "myselfou");
+        }
+        if(!answerFound){
+            answerFound = checkRefactoring(initials, targets,
+                    yes + SEPARATOR + "eforhel" + SEPARATOR + "yselfou");
+        }
+
+        assertTrue(answerFound);
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:6 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
     }
 
