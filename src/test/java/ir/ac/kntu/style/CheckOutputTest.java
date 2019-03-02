@@ -2,6 +2,7 @@ package ir.ac.kntu.style;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import ir.ac.kntu.MassiveRefactoring;
 
@@ -47,7 +48,7 @@ public class CheckOutputTest {
                 System.setIn(inputStream);
                 System.setOut(printStream);
                 MassiveRefactoring.main(new String[]{});
-                String found = reader.readLine();
+                String found = reader.lines().collect(Collectors.joining(SEPARATOR));
                 if(found == null){
                     found = "";
                 }
@@ -121,7 +122,7 @@ public class CheckOutputTest {
     public void testCase7(){
         assertTrue(checkRefactoring(
                 new String[]{"psomething", "pabcdefg", "pbcacb", "p"},
-                new String[]{"qsomething", "gabcdefg", "qbcacb", "q"},
+                new String[]{"qsomething", "qabcdefg", "qbcacb", "q"},
                 "YES" + SEPARATOR + "p" + SEPARATOR + "q"));
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:4 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
     }
@@ -207,64 +208,6 @@ public class CheckOutputTest {
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:4 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
     }
 
-    @Test(timeout = TIME_LIMIT * 9)
-    public void testCase17(){
-        boolean trueAnswerFound = checkRefactoring(
-                new String[]{"qwe", "qaz"},
-                new String[]{"qwe", "qaz"},
-                "YES" + SEPARATOR + "qwe" + SEPARATOR + "qwe");
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "we" + SEPARATOR + "we");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "qw" + SEPARATOR + "qw");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "e" + SEPARATOR + "e");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "q" + SEPARATOR + "q");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "qaz" + SEPARATOR + "qaz");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "qa" + SEPARATOR + "qa");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "az" + SEPARATOR + "az");
-        }
-        if(!trueAnswerFound){
-            trueAnswerFound = checkRefactoring(
-                    new String[]{"qwe", "qaz"},
-                    new String[]{"qwe", "qaz"},
-                    "YES" + SEPARATOR + "z" + SEPARATOR + "z");
-        }
-
-        assertTrue(trueAnswerFound);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:4 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
-    }
 
     @Test(timeout = TIME_LIMIT)
     public void testCase18(){
@@ -334,7 +277,7 @@ public class CheckOutputTest {
                 "YES" + SEPARATOR +
                         "aoowieoowjhsalskjdkskkksjddbdnsnnsnmmansoo" + SEPARATOR +
                         "aoowieqssthjhyiojdkskkksjddbdnsnnsnmmansoo"));
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:4 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:8 , reason:\"Your Output is correct.\" } | $$$GRADER$$$" );
     }
 
     @Test(timeout = TIME_LIMIT)
